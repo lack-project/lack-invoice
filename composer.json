@@ -1,0 +1,32 @@
+{
+  "name": "lack/invoice",
+  "description": "Create Invoices",
+  "license": "MIT",
+  "authors": [
+    { "name": "Matthias Leuffen", "email": "m@tth.es" }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "phore/core": "*",
+    "phore/hydrator": "*",
+    "fpdf/fpdf": "^1.84"
+  },
+
+  "suggest": {
+  },
+  "autoload": {
+    "psr-4": {
+      "Lack\\Invoice\\": "src/"
+    },
+    "files": [
+    ]
+  },
+  "bin": ["bin/lackinvoice.php"],
+  "minimum-stability": "dev",
+  "require-dev": {
+    "phore/tester": "*"
+  },
+  "config": {
+    "preferred-install": "source"
+  }
+}

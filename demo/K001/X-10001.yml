@@ -1,0 +1,10 @@
+invoiceId: X-10001
+invoiceDate: 04.07.2022
+dueDate: 14.07.2022
+items:
+  -
+    title: Standardprogrammierung
+    desc: Soundsoviele Stunden
+    vat: 19
+    unit_price_net: 65
+    quantity: 7.5
