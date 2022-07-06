@@ -80,6 +80,18 @@ class InvoiceSheet extends ColumnFpdf
         );
         $this->printRow(
             new Col(55),
+            new Col(15, "Zahlart:", style: "", fontsize: 10, height: 6),
+            new Col(30, $this->invoice->payMethod, style: "", fontsize: 10, height: 6)
+        );
+        if ($this->invoice->dueDate !== null) {
+            $this->printRow(
+                new Col(55),
+                new Col(15, "Zahlungsziel:", style: "", fontsize: 10, height: 6),
+                new Col(30, $this->invoice->dueDate, style: "", fontsize: 10, height: 6)
+            );
+        }
+        $this->printRow(
+            new Col(55),
 
             new Col(30, "", 3, style: "b", fill: false)
         );
@@ -150,7 +162,7 @@ class InvoiceSheet extends ColumnFpdf
             new Col(20, number_format($totalNet * ( $vat/100), 2, ",", "."), align: 'R', style: "i"),
         );
         $this->printRow(
-            new Col(55, "Bitte zahlen Sie den Rechnungsbetrag bis zum 31.07.2022."),
+            new Col(55, "Bitte überweisen Sie den Rechnungsbetrag auf das u.a. Konto."),
             new Col(21, "Rechnungsbetrag", align: 'L', style: "b", fill: true, fontsize: 12, height: 10),
             new Col(20, number_format($totalNet * ( 1 + $vat/100), 2, ",", ".") . " EUR", align: 'R', style: "b", fontsize: 12, height: 10, fill: true),
         );
