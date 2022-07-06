@@ -8,11 +8,11 @@ use Lack\Invoice\Type\T_Customer;
 use Lack\Invoice\Type\T_Invoice;
 use Lack\Invoice\Type\T_Layout;
 
-if (file_exists(__DIR__ . "/../vendor/autoload.php"))
-    require_once __DIR__ . "/../vendor/autoload.php";
-else
-    require_once __DIR__ . "/../autoload.php";
-
+if (file_exists(__DIR__ . "/../vendor/autoload.php")) {
+    require __DIR__ . "/../vendor/autoload.php";
+} else {
+    require __DIR__ . "/../../../autoload.php";
+}
 
 $tlayout = phore_file("./inv_layout.yml")->get_yaml(T_Layout::class);
 

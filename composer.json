@@ -8,6 +8,7 @@
   "require": {
     "php": ">=8.1",
     "phore/core": "*",
+    "phore/filesystem": "*",
     "phore/hydrator": "*",
     "fpdf/fpdf": "^1.84"
   },
