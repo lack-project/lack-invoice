@@ -14,6 +14,11 @@ class T_Invoice
     public string $dueDate;
 
     /**
+     * @var string|null
+     */
+    public ?string $notice = null;
+
+    /**
      * @var T_Invoice_Item[]
      */
     public array $items = [];

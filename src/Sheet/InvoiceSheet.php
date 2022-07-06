@@ -162,7 +162,7 @@ class InvoiceSheet extends ColumnFpdf
             new Col(20, number_format($totalNet * ( $vat/100), 2, ",", "."), align: 'R', style: "i"),
         );
         $this->printRow(
-            new Col(55, "Bitte überweisen Sie den Rechnungsbetrag auf das u.a. Konto."),
+            new Col(55, $this->invoice->notice ?? "Bitte überweisen Sie den Rechnungsbetrag auf das u.a. Konto."),
             new Col(21, "Rechnungsbetrag", align: 'L', style: "b", fill: true, fontsize: 12, height: 10),
             new Col(20, number_format($totalNet * ( 1 + $vat/100), 2, ",", ".") . " EUR", align: 'R', style: "b", fontsize: 12, height: 10, fill: true),
         );
