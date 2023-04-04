@@ -35,6 +35,12 @@ class InvoiceFacet
         }
 
         $p->printTotals($total, 19);
+        
+        if ($this->invoice->attachment !== "") {
+            $p->AddPage();
+            $p->printAttachment($this->invoice->attachment);
+        }
+        
         if ($outFile !== null)
             return $p->Output("F", $outFile, true);
         return $p->Output("S","", true);

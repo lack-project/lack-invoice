@@ -14,6 +14,13 @@ class T_Invoice
     public string $dueDate;
 
     /**
+     * Kundenreferenz Nr
+     * 
+     * @var string|null 
+     */
+    public ?string $refNo = null;
+    
+    /**
      * @var string|null
      */
     public ?string $notice = null;
@@ -26,4 +33,9 @@ class T_Invoice
 
     public bool $net_invoice = true;
 
+    /**
+     * @var string 
+     */
+    public string $attachment = "";
+    
 }
