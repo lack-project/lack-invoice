@@ -95,7 +95,7 @@ class InvoiceSheet extends ColumnFpdf
             $this->printRow(
                 new Col(55),
                 new Col(15, "Zahlungsziel:", style: "", fontsize: 10, height: 6),
-                new Col(30, $this->invoice->dueDate, style: "", fontsize: 10, height: 6)
+                new Col(30, $this->invoice->getDueDate(), style: "", fontsize: 10, height: 6)
             );
         }
         $this->printRow(

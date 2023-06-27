@@ -13,13 +13,21 @@ class T_Invoice
 
     public string $dueDate;
 
+    public function getDueDate() {
+        $invDate = strtotime($this->invoiceDate);
+        if (str_starts_with($this->dueDate, "+")) {
+            return "bis zum " . date("d.m.Y", strtotime($this->dueDate, $invDate));
+        }
+        return $this->dueDate;
+    }
+
     /**
      * Kundenreferenz Nr
-     * 
-     * @var string|null 
+     *
+     * @var string|null
      */
     public ?string $refNo = null;
-    
+
     /**
      * @var string|null
      */
@@ -34,8 +42,8 @@ class T_Invoice
     public bool $net_invoice = true;
 
     /**
-     * @var string 
+     * @var string
      */
     public string $attachment = "";
-    
+
 }
