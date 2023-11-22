@@ -6,13 +6,24 @@ class T_Customer
 {
 
     public string $customerId;
-    
+
     public string $email;
+
+    /**
+     * Multiline (separated by \n) address including full Postal Address
+     *
+     * Example:
+     * Dr. Max Mustermann
+     * Musterstraße 1
+     * 12345 Musterstadt
+     *
+     * @var string
+     */
     public string $address;
 
 
     /**
-     * @var string 
+     * @var string
      */
     public string $info = "";
 }

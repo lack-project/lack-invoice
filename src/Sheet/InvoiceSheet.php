@@ -125,15 +125,17 @@ class InvoiceSheet extends ColumnFpdf
         );
     }
 
+
+    protected $itemCounter = 1;
+
     public function printItemLine($desc, $price, $quantity, $optDescription=null) {
-        static $i=1;
         $this->printRow(
             new Col(100, "", height: 3),
 
         );
         $this->printRow(
             new Col(5),
-            new Col(5, $i++),
+            new Col(5, $this->itemCounter++),
             new Col(35, "$desc", style: "b"),
             new Col(10, "19%", align: 'R'),
             new Col(15, number_format($price, 2, ",", "."), align: 'R'),
