@@ -36,6 +36,10 @@ class InvoiceFacet
 
         $p->printTotals($total, 19);
         
+        if ($this->layout->exclamationText !== null) {
+            $p->printExclamationBox($this->layout->exclamationText);
+        }
+        
         if ($this->invoice->attachment !== "") {
             $p->AddPage();
             $p->printAttachment($this->invoice->attachment);

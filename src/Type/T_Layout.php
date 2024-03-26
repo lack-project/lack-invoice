@@ -15,5 +15,11 @@ class T_Layout
 
     public string $windowAddress = "Undefined Window Address";
 
-
+    /**
+     * Special Text box for urgent messages
+     * 
+     * @var string|null 
+     */
+    public ?string $exclamationText = null;
+    
 }
