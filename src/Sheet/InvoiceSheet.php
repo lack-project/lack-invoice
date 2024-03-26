@@ -177,16 +177,17 @@ class InvoiceSheet extends ColumnFpdf
             new Col(20, number_format($totalNet * ( 1 + $vat/100), 2, ",", ".") . " EUR", align: 'R', style: "b", fontsize: 12, height: 10, fill: true),
         );
     }
-    
+
     public function printExclamationBox($message) {
         $this->printRow(
-            new Col(100, "", height: 3),
+            new Col(100, "", height: 6),
 
         );
         $this->printRow(
-            new Col(5),
-            new Col(5),
-            new Col(90, $message, fontsize: 12, style: "b", fill: true, height: 10),
+
+            new Col(10),
+            new Col(80, $message, fontsize: 10, style: "b", fill: true, height: 5, border: "1", align: "C"),
+            new Col(10),
         );
     }
 
