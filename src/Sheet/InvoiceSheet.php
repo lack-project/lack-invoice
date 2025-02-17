@@ -128,8 +128,9 @@ class InvoiceSheet extends ColumnFpdf
 
     protected $itemCounter = 1;
 
-    public function printItemLine($desc, $price, $quantity, $optDescription=null) {
+    public function printItemLine($desc, $price, $quantity, $optDescription=null, $total=null) {
         if ($this->GetY() > 240) {
+            $this->printUebertrag($total);
             $this->AddPage();
             $this->printItemHeader(30);
         }
@@ -155,6 +156,19 @@ class InvoiceSheet extends ColumnFpdf
         }
     }
 
+   public function printUebertrag($totalNet) {
+        $this->printRow(
+            new Col(100, "", height: 3),
+
+        );
+        $this->printRow(
+            new Col(5),
+            new Col(5),
+            new Col(45),
+            new Col(21, "Übertrag", align: 'R', border: "TB", style: "i"),
+            new Col(20, number_format($totalNet, 2, ",", "."), align: 'R', style: "i", border: "TB"),
+        );
+    }
 
     public function printTotals($totalNet, $vat) {
         $this->printRow(

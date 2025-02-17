@@ -31,20 +31,20 @@ class InvoiceFacet
         $total = 0.;
         foreach ($this->invoice->items as $item) {
             $total += $item->unit_price_net * $item->quantity;
-            $p->printItemLine($item->title, $item->unit_price_net, $item->quantity, $item->desc);
+            $p->printItemLine($item->title, $item->unit_price_net, $item->quantity, $item->desc, $total);
         }
 
         $p->printTotals($total, 19);
-        
+
         if ($this->layout->exclamationText !== null) {
             $p->printExclamationBox($this->layout->exclamationText);
         }
-        
+
         if ($this->invoice->attachment !== "") {
             $p->AddPage();
             $p->printAttachment($this->invoice->attachment);
         }
-        
+
         if ($outFile !== null)
             return $p->Output("F", $outFile, true);
         return $p->Output("S","", true);
