@@ -111,8 +111,8 @@ class InvoiceSheet extends ColumnFpdf
     }
 
 
-    public function printItemHeader() {
-        $this->SetY(100);
+    public function printItemHeader(int $offsetTop = 100) {
+        $this->SetY($offsetTop);
         $this->printRow(
             new Col(5),
             new Col(5, "Pos", border: "B"),
@@ -129,6 +129,10 @@ class InvoiceSheet extends ColumnFpdf
     protected $itemCounter = 1;
 
     public function printItemLine($desc, $price, $quantity, $optDescription=null) {
+        if ($this->GetY() > 240) {
+            $this->AddPage();
+            $this->printItemHeader(30);
+        }
         $this->printRow(
             new Col(100, "", height: 3),
 
