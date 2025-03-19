@@ -129,7 +129,7 @@ class InvoiceSheet extends ColumnFpdf
     protected $itemCounter = 1;
 
     public function printItemLine($desc, $price, $quantity, $optDescription=null, $total=null) {
-        if ($this->GetY() > 240) {
+        if ($this->GetY() > 210) {
             $this->printUebertrag($total);
             $this->AddPage();
             $this->printItemHeader(30);
