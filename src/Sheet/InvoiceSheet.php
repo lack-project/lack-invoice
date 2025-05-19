@@ -50,6 +50,42 @@ class InvoiceSheet extends ColumnFpdf
         );
     }
 
+    public function printOfferHeader()
+    {
+        $this->setY(10);
+        $this->SetFillColor(230, 230, 230);
+
+        $this->printRow(
+            new Col(55),
+            new Col(45, "Angebot", 28, 15)
+        );
+        $this->printRow(
+            new Col(55),
+            new Col(45, "", 28, 15)
+        );
+        $this->printRow(
+            new Col(55),
+            new Col(15, "AngebotNr:", 10,8, style: "b", fill: true),
+            new Col(30, $this->invoice->invoiceId, 12,8, style: "b", fill: true)
+        );
+
+        $this->printRow(
+            new Col(55),
+            new Col(15, "Kunden-Id:", style: "", fontsize: 10, height: 10),
+            new Col(30, $this->customer->customerId, style: "", fontsize: 12, height: 10)
+        );
+        if ($this->invoice->refNo !== null) {
+            $this->printRow(
+                new Col(55),
+                new Col(15, "Kdn. Referenz:", style: "", fontsize: 10, height: 10),
+                new Col(30, $this->invoice->refNo, style: "", fontsize: 10, height: 10)
+            );
+        }
+    }
+
+
+
+
     public function printInvoiceHeader()
     {
         $this->setY(10);
@@ -170,7 +206,7 @@ class InvoiceSheet extends ColumnFpdf
         );
     }
 
-    public function printTotals($totalNet, $vat) {
+    public function printTotals($totalNet, $vat, $defaultNotice = "", $totalsLine = "Rechnungsbetrag") {
         $this->printRow(
             new Col(100, "", height: 3),
 
@@ -190,8 +226,8 @@ class InvoiceSheet extends ColumnFpdf
             new Col(20, number_format($totalNet * ( $vat/100), 2, ",", "."), align: 'R', style: "i"),
         );
         $this->printRow(
-            new Col(55, $this->invoice->notice ?? "Bitte überweisen Sie den Rechnungsbetrag auf das u.a. Konto."),
-            new Col(21, "Rechnungsbetrag", align: 'L', style: "b", fill: true, fontsize: 12, height: 10, ),
+            new Col(55, $this->invoice->notice ?? $defaultNotice),
+            new Col(21, $totalsLine, align: 'L', style: "b", fill: true, fontsize: 12, height: 10, ),
             new Col(20, number_format($totalNet * ( 1 + $vat/100), 2, ",", ".") . " EUR", align: 'R', style: "b", fontsize: 12, height: 10, fill: true),
         );
     }
