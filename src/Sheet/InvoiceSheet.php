@@ -81,6 +81,11 @@ class InvoiceSheet extends ColumnFpdf
                 new Col(30, $this->invoice->refNo, style: "", fontsize: 10, height: 10)
             );
         }
+        $this->printRow(
+            new Col(55),
+            new Col(15, "Datum", 10,6, style: "", fill: false),
+            new Col(30, $this->invoice->invoiceDate, 12,6, style: "", fill: false)
+        );
     }
 
 
