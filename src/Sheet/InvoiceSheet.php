@@ -122,11 +122,17 @@ class InvoiceSheet extends ColumnFpdf
         if ($this->invoice->refNo !== null) {
             $this->printRow(
                 new Col(55),
-                new Col(15, "Kdn. Referenz:", style: "", fontsize: 10, height: 10),
-                new Col(30, $this->invoice->refNo, style: "", fontsize: 10, height: 10)
+                new Col(15, "Kdn. Referenz:", style: "", fontsize: 10, height: 6),
+                new Col(30, $this->invoice->refNo, style: "", fontsize: 10, height: 6)
             );
         }
-
+        if ($this->customer->vatNumber !== null) {
+            $this->printRow(
+                new Col(55),
+                new Col(15, "Kdn. USt-IdNr.:", style: "", fontsize: 10, height: 6),
+                new Col(30, $this->customer->vatNumber, style: "", fontsize: 10, height: 6)
+            );
+        }
         $this->printRow(
             new Col(55),
             new Col(15, "Zahlart:", style: "", fontsize: 10, height: 6),
@@ -139,15 +145,11 @@ class InvoiceSheet extends ColumnFpdf
                 new Col(30, $this->invoice->getDueDate(), style: "", fontsize: 10, height: 6)
             );
         }
-        $this->printRow(
-            new Col(55),
 
-            new Col(30, "", 3, style: "b", fill: false)
-        );
         $this->printRow(
             new Col(55),
-            new Col(15, "Datum", 10,6, style: "", fill: false),
-            new Col(30, $this->invoice->invoiceDate, 12,6, style: "", fill: false)
+            new Col(15, "Datum", 10,8, style: "", fill: false),
+            new Col(30, $this->invoice->invoiceDate, 12,8, style: "", fill: false)
         );
     }
 

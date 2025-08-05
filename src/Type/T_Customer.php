@@ -23,6 +23,13 @@ class T_Customer
 
 
     /**
+     * The VAT number of the customer.
+     *
+     * @var string|null
+     */
+    public ?string $vatNumber = null;
+
+    /**
      * @var string
      */
     public string $info = "";
