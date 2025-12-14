@@ -21,6 +21,14 @@ class T_Invoice
         return $this->dueDate;
     }
 
+    public function getDueDateRaw() {
+        $invDate = strtotime($this->invoiceDate);
+        if (str_starts_with($this->dueDate, "+")) {
+            return date("d.m.Y", strtotime($this->dueDate, $invDate));
+        }
+        return $this->dueDate;
+    }
+
     /**
      * Kundenreferenz Nr
      *
